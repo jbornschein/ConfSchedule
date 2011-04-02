@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" android:orientation="vertical">
+    android:layout_height="fill_parent" android:orientation="vertical" android:background="@drawable/leds">
     <HorizontalScrollView android:layout_width="match_parent" android:id="@+id/horizontalScrollView1" android:layout_height="wrap_content" android:layout_weight="10">
-        <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="horizontal">
-            <LinearLayout android:layout_width="wrap_content" android:layout_height="match_parent" android:id="@+id/linearLayout3">
-                <AnalogClock android:id="@+id/analogClock1" android:layout_width="wrap_content" android:layout_height="wrap_content"></AnalogClock>
-                <AnalogClock android:id="@+id/analogClock2" android:layout_width="wrap_content" android:layout_height="wrap_content"></AnalogClock>
-                <AnalogClock android:id="@+id/analogClock3" android:layout_width="wrap_content" android:layout_height="wrap_content"></AnalogClock>
-                <AnalogClock android:id="@+id/analogClock4" android:layout_width="wrap_content" android:layout_height="wrap_content"></AnalogClock>
-            </LinearLayout>
+        <LinearLayout android:id="@+id/scrollLayout" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="horizontal">
+            <org.capsec.confsched.EventScheduleView
+               android:layout_width="2000dip" android:layout_height="100dip" android:id="@+id/eventSchedule">
+            </org.capsec.confsched.EventScheduleView>
         </LinearLayout>
     </HorizontalScrollView>
     <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout2" android:layout_height="60dip" android:layout_gravity="right">
