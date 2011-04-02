@@ -2,4 +2,5 @@
 <resources>
     <string name="hello">Hello World, ConfSched!</string>
     <string name="app_name">ConfSched</string>
+    <string name="day">Day</string>
 </resources>

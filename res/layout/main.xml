@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="horizontal">
-    <LinearLayout android:layout_width="wrap_content" android:layout_height="match_parent" android:id="@+id/linearLayout1" android:orientation="vertical">
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/button1" android:text="&gt;&gt;"></Button>
-        <Button android:layout_width="wrap_content" android:text="&gt;&gt;" android:layout_height="wrap_content" android:id="@+id/button2"></Button>
+    android:layout_height="fill_parent" android:orientation="vertical">
+    <HorizontalScrollView android:layout_width="match_parent" android:id="@+id/horizontalScrollView1" android:layout_height="wrap_content" android:layout_weight="10">
+        <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="horizontal">
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="match_parent" android:id="@+id/linearLayout3">
+                <AnalogClock android:id="@+id/analogClock1" android:layout_width="wrap_content" android:layout_height="wrap_content"></AnalogClock>
+                <AnalogClock android:id="@+id/analogClock2" android:layout_width="wrap_content" android:layout_height="wrap_content"></AnalogClock>
+                <AnalogClock android:id="@+id/analogClock3" android:layout_width="wrap_content" android:layout_height="wrap_content"></AnalogClock>
+                <AnalogClock android:id="@+id/analogClock4" android:layout_width="wrap_content" android:layout_height="wrap_content"></AnalogClock>
+            </LinearLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+    <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout2" android:layout_height="60dip" android:layout_gravity="right">
+        <Button android:text="&lt;&lt;" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/day_prev"></Button>
+        <Button android:text="&gt;&gt;" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/day_next" ></Button>
     </LinearLayout>
-    <ScrollView android:layout_height="match_parent" android:id="@+id/scrollView1" android:layout_width="match_parent">
-    </ScrollView>
 </LinearLayout>
