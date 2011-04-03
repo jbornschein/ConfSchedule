@@ -3,6 +3,8 @@
  */
 package org.capsec.confsched;
 
+import java.util.Calendar;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -132,15 +134,21 @@ public class EventScheduleView extends View {
     
     protected void drawCurrentTime(Canvas canvas) {
     	// get current date/time
-    	// XXX
+    	Calendar rightNow = Calendar.getInstance();
+    	int curHour = rightNow.get(Calendar.HOUR_OF_DAY);
+    	int curMinute = rightNow.get(Calendar.MINUTE);
+
+    	if (curHour < mFirstHour || curHour > mLastHour) 
+    		return;
+    	
+    	int hours = curHour - mFirstHour; 
+    	int x = mBorder + hours * mHourWidth + curMinute * mHourWidth / 60;
+    	int totalHeight = mTimelineHeight + mNumTracks * mTrackHeight;
     	
     	Paint paint = new Paint();
     	paint.setColor(Color.RED);
     	paint.setStyle(Paint.Style.STROKE);
     	paint.setStrokeWidth(2.3f);
-    	
-    	int totalHeight = mTimelineHeight + mNumTracks * mTrackHeight;
-    	int x = 235;
     	
     	canvas.drawLine(x, 0, x, totalHeight, paint);
     }
