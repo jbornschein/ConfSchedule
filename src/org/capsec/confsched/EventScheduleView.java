@@ -82,6 +82,8 @@ public class EventScheduleView extends View {
     	for (int t=0; t<mNumTracks; t++) {
     		drawTrack(t, canvas);
     	}
+    	
+    	drawCurrentTime(canvas);
     }
 
     protected void drawTimeline(Canvas canvas) {
@@ -105,24 +107,43 @@ public class EventScheduleView extends View {
     }
 
     protected void drawTrack(int trackNum, Canvas canvas) {
-    	Paint paint = new Paint();
-    	paint.setColor(Color.WHITE);
-    	paint.setAlpha(0x88);
-    	paint.setStyle(Paint.Style.FILL_AND_STROKE);
+    	Paint fillPaint = new Paint();
+    	fillPaint.setColor(Color.WHITE);
+    	fillPaint.setAlpha(0xaa);
+    	fillPaint.setStyle(Paint.Style.FILL);
+    	Paint strokePaint = new Paint();
+    	strokePaint.setColor(Color.BLACK);
+    	strokePaint.setStyle(Paint.Style.STROKE);
+    	strokePaint.setAntiAlias(true);
     	
     	int hours = mLastHour - mFirstHour + 1;
     	for(int h=0; h < hours; h++) {
-    		//if (h % (trackNum+1) == 0)
-    		//	continue;
+    		if (h % (trackNum+1) == 1)
+    			continue;
     		
     		int x = mBorder + h * mHourWidth + mPadding;
     		int y = mTimelineHeight + trackNum * mTrackHeight + mPadding;
     		
     		RectF rect = new RectF(x, y, x + mHourWidth - mPadding, y + mTrackHeight - mPadding);
-    		canvas.drawRoundRect(rect, 7, 7, paint);
+    		canvas.drawRoundRect(rect, 7, 7, fillPaint);
+    		canvas.drawRoundRect(rect, 7, 7, strokePaint);
     	}
-    		
-    	
     }
+    
+    protected void drawCurrentTime(Canvas canvas) {
+    	// get current date/time
+    	// XXX
+    	
+    	Paint paint = new Paint();
+    	paint.setColor(Color.RED);
+    	paint.setStyle(Paint.Style.STROKE);
+    	paint.setStrokeWidth(2.3f);
+    	
+    	int totalHeight = mTimelineHeight + mNumTracks * mTrackHeight;
+    	int x = 235;
+    	
+    	canvas.drawLine(x, 0, x, totalHeight, paint);
+    }
+    	
     
 }
