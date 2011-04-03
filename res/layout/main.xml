@@ -5,7 +5,7 @@
     <HorizontalScrollView android:layout_width="match_parent" android:id="@+id/horizontalScrollView1" android:layout_height="wrap_content" android:layout_weight="10">
         <LinearLayout android:id="@+id/scrollLayout" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="horizontal">
             <org.capsec.confsched.EventScheduleView
-               android:layout_width="2000dip" android:layout_height="500dip" android:id="@+id/eventSchedule">
+               android:layout_width="wrap_content" android:layout_height="match_parent" android:id="@+id/eventSchedule">
             </org.capsec.confsched.EventScheduleView>
         </LinearLayout>
     </HorizontalScrollView>

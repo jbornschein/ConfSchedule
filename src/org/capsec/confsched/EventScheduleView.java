@@ -23,7 +23,7 @@ public class EventScheduleView extends View {
 	/**
 	 * General information about the schedule to be drawn
 	 */
-	protected int mNumTracks = 2;
+	protected int mNumTracks = 3;
 	protected int mFirstHour = 10;
 	protected int mLastHour = 18;
 	
@@ -44,6 +44,36 @@ public class EventScheduleView extends View {
 
     public EventScheduleView(Context context, AttributeSet attrs) {
         super(context, attrs);
+    }
+
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+    	int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+    	int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+    	int proposedWidth = MeasureSpec.getSize(widthMeasureSpec);
+    	int proposedHeight = MeasureSpec.getSize(heightMeasureSpec);
+    	
+    	// The width this widget would like to take...
+    	int totalHours = mLastHour - mFirstHour + 1;
+    	int width = 2 * mBorder + totalHours * mHourWidth; 
+    	
+    	if (widthMode == MeasureSpec.EXACTLY) {
+    		width = proposedWidth;
+    	} else if (widthMode == MeasureSpec.AT_MOST) {
+    		width = Math.min(proposedWidth, width);
+    	};
+
+    	int height = mTimelineHeight + mNumTracks * mTrackHeight; 
+    	if (heightMode == MeasureSpec.EXACTLY) {
+    		height = proposedHeight;
+    	} else if (heightMode == MeasureSpec.AT_MOST) {
+    		height = Math.min(proposedHeight, height);
+    	}
+
+    	// Recalculate scaling so that schdule fits into widget
+    	mTrackHeight = (height - mTimelineHeight - mBorder) / mNumTracks;
+		mHourWidth = (width - 2 * mBorder) / totalHours;
+    	
+    	setMeasuredDimension(width, height);
     }
 
     protected void onDraw(Canvas canvas) {
