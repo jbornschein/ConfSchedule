@@ -1,4 +1,5 @@
 /**
+ * @author Joerg Bornschein <jb@capsec.org>
  * 
  */
 package org.capsec.confsched;
@@ -6,19 +7,16 @@ package org.capsec.confsched;
 import java.util.Calendar;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 
 /**
- * @author Joerg Bornschein <jb@capsec.org>
- *
+ * EventScheduleView
  */
 public class EventScheduleView extends View {
 
@@ -48,6 +46,9 @@ public class EventScheduleView extends View {
         super(context, attrs);
     }
 
+    /**
+     * onMeasure returns the preferred widget size
+     */
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
     	int widthMode = MeasureSpec.getMode(widthMeasureSpec);
     	int heightMode = MeasureSpec.getMode(heightMeasureSpec);
@@ -71,13 +72,16 @@ public class EventScheduleView extends View {
     		height = Math.min(proposedHeight, height);
     	}
 
-    	// Recalculate scaling so that schdule fits into widget
+    	// Recalculate scaling so that the schedule fits into widget
     	mTrackHeight = (height - mTimelineHeight - mBorder) / mNumTracks;
 		mHourWidth = (width - 2 * mBorder) / totalHours;
     	
     	setMeasuredDimension(width, height);
     }
 
+    /**
+     * onDraw method redraws the whole widget when necessary.
+     */
     protected void onDraw(Canvas canvas) {
     	drawTimeline(canvas);
     	
@@ -94,8 +98,8 @@ public class EventScheduleView extends View {
     	Paint paint = new Paint();
     	paint.setColor(Color.WHITE);
     	paint.setStyle(Paint.Style.STROKE);
-    	paint.setTextSize(fontSize);
     	paint.setTypeface(Typeface.MONOSPACE);
+    	paint.setTextSize(fontSize);
     	paint.setAntiAlias(true);
     	
     	int hours = mLastHour - mFirstHour + 1;
@@ -108,6 +112,10 @@ public class EventScheduleView extends View {
     	}
     }
 
+    
+    /**
+     * Draw all the events (rectangles)
+     */
     protected void drawTrack(int trackNum, Canvas canvas) {
     	Paint fillPaint = new Paint();
     	fillPaint.setColor(Color.WHITE);
@@ -132,18 +140,21 @@ public class EventScheduleView extends View {
     	}
     }
     
+    /**
+     *  Draw the red line indicating the current time.
+     */
     protected void drawCurrentTime(Canvas canvas) {
+    	if (!curTimeVisible())
+    		return; 
+    	
     	// get current date/time
     	Calendar rightNow = Calendar.getInstance();
-    	int curHour = rightNow.get(Calendar.HOUR_OF_DAY);
+       	int curHour = rightNow.get(Calendar.HOUR_OF_DAY);
     	int curMinute = rightNow.get(Calendar.MINUTE);
-
-    	if (curHour < mFirstHour || curHour > mLastHour) 
-    		return;
     	
     	int hours = curHour - mFirstHour; 
     	int x = mBorder + hours * mHourWidth + curMinute * mHourWidth / 60;
-    	int totalHeight = mTimelineHeight + mNumTracks * mTrackHeight;
+    	int totalHeight = mTimelineHeight + mNumTracks * mTrackHeight + mBorder;
     	
     	Paint paint = new Paint();
     	paint.setColor(Color.RED);
@@ -153,5 +164,20 @@ public class EventScheduleView extends View {
     	canvas.drawLine(x, 0, x, totalHeight, paint);
     }
     	
-    
+    /**
+     * Return wether a screen update might be neccessary because the current day/time
+     * is displayed in this widget.
+     */
+    protected boolean curTimeVisible() {
+    	Calendar rightNow = Calendar.getInstance();
+    	int curHour = rightNow.get(Calendar.HOUR_OF_DAY);
+
+    	// XXX check day 
+    	
+    	
+    	if (curHour < (mFirstHour-1) || curHour > (mLastHour+1)) 
+    		return false;
+    	
+    	return true;
+    }
 }
