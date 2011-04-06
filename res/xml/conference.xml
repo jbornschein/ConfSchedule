@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<conference xmlns:android="http://schemas.android.com/apk/res/android">
+	<name>1st International Testing Conference</name>
+	<url>http://www.capsec.org/TestConf</url>
+
+	<day>
+		<date>2011-05-23</date>
+		<track>
+			<room>Room 1</room>
+			<event>
+				<title>Test 1</title>
+				<author>Joerg Bornschein</author>
+				<start>10:00</start>
+				<end>11:00</end>
+			</event>
+			<event>
+				<title>Test 1</title>
+				<author>Joerg Bornschein</author>
+				<start>11:00</start>
+				<end>12:00</end>
+			</event>
+			<event>
+				<title>Test 1</title>
+				<author>Joerg Bornschein</author>
+				<start>13:00</start>
+				<end>15:00</end>
+			</event>
+		</track>
+
+		<track>
+			<room>Room 1</room>
+			<event>
+				<title>Test 1</title>
+				<author>Joerg Bornschein</author>
+				<start>11:30</start>
+				<end>12:30</end>
+			</event>
+			<event>
+				<title>Test 1</title>
+				<author>Joerg Bornschein</author>
+				<start>13:00</start>
+				<end>15:00</end>
+			</event>
+			<event>	
+				<title>Test 1</title>
+				<author>Joerg Bornschein</author>
+				<start>15:00</start>
+				<end>16:00</end>
+			</event>
+		</track>
+	</day>
+
+</conference>
