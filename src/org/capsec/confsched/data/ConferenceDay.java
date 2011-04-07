@@ -13,5 +13,5 @@ import java.util.List;
  */
 public class ConferenceDay {
 	public Date date;
-	public List<ConferenceTrack> tracks = new ArrayList<ConferenceTrack>();
+	public ArrayList<ConferenceTrack> tracks = new ArrayList<ConferenceTrack>();
 }

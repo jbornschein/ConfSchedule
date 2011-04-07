@@ -12,5 +12,5 @@ import java.util.List;
  */
 public class ConferenceTrack {
 	public String room = "";
-	public List<ConferenceEvent> events = new ArrayList<ConferenceEvent>();
+	public ArrayList<ConferenceEvent> events = new ArrayList<ConferenceEvent>();
 }

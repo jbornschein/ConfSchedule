@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -28,7 +29,7 @@ public class Conference {
 	
 	public String name = "";
 	public String url = "";
-	public List<ConferenceDay> days = new ArrayList<ConferenceDay>();
+	public ArrayList<ConferenceDay> days = new ArrayList<ConferenceDay>();
 
 
 	/**
@@ -39,6 +40,9 @@ public class Conference {
 	public static Conference parseXML(Context ctx) 
 			throws IOException, XmlPullParserException
 	{
+		Log.d(TAG, "Starting to parse XML file...");
+
+		
 		XmlPullParser xpp = ctx.getResources().getXml(R.xml.conference);
 
 		Conference conf = null;
@@ -185,8 +189,16 @@ public class Conference {
 						confEvent.abstractText += xpp.getText();
 						break;
 					case EventStart:
+						SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm", Locale.US);
+						Date date1 = sdf1.parse(xpp.getText());
+						confEvent.startHour = date1.getHours();
+						confEvent.startMin = date1.getMinutes();
 						break;
 					case EventEnd:
+						SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm", Locale.US);
+						Date date2 = sdf2.parse(xpp.getText());
+						confEvent.endHour = date2.getHours();
+						confEvent.endMin = date2.getMinutes();
 						break;
 					}
 				} catch (ParseException e) {

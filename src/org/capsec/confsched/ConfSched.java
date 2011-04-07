@@ -28,6 +28,9 @@ public class ConfSched extends Activity {
         
         try {
         	mConference = Conference.parseXML(context);
+        	
+        	EventScheduleView evs = (EventScheduleView) findViewById(R.id.eventSchedule);
+        	evs.setConferenceData(mConference.days.get(0));
         } catch (IOException e) {
         	Log.e(TAG, e.getMessage());
         } catch (XmlPullParserException e) {
