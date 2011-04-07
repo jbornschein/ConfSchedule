@@ -16,9 +16,13 @@ import org.capsec.confsched.data.ConferenceTrack;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.text.Layout;
+import android.text.StaticLayout;
+import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -63,9 +67,7 @@ public class EventScheduleView extends View {
     	// Find first/last hour of this conference
     	mFirstHour = 23;
     	mLastHour = 0;
-    	for (int t=0; t < mNumTracks; t++) {
-    		ConferenceTrack track = confDay.tracks.get(t);
-    		
+    	for (ConferenceTrack track : confDay.tracks) {
     		int trackSize = track.events.size();
     		mFirstHour = Math.min(mFirstHour, track.events.get(0).startHour);
     		mLastHour = Math.max(mLastHour, track.events.get(trackSize-1).endHour);
@@ -85,7 +87,7 @@ public class EventScheduleView extends View {
     	int proposedHeight = MeasureSpec.getSize(heightMeasureSpec);
     	
     	// The width this widget would like to take...
-    	int totalHours = mLastHour - mFirstHour + 1;
+    	int totalHours = mLastHour - mFirstHour;
     	int width = 2 * mBorder + totalHours * mHourWidth; 
     	
     	if (widthMode == MeasureSpec.EXACTLY) {
@@ -146,25 +148,27 @@ public class EventScheduleView extends View {
      * Draw all the events (rectangles)
      */
     protected void drawTrack(int trackNum, Canvas canvas) {
-    	int fontSize = 18;
+    	int fontSize = 16;
 
     	
     	Paint fillPaint = new Paint();
     	fillPaint.setColor(Color.WHITE);
     	fillPaint.setAlpha(0xaa);
     	fillPaint.setStyle(Paint.Style.FILL);
+    	
     	Paint strokePaint = new Paint();
     	strokePaint.setColor(Color.BLACK);
     	strokePaint.setStyle(Paint.Style.STROKE);
     	strokePaint.setAntiAlias(true);
-    	strokePaint.setTypeface(Typeface.DEFAULT);
-    	strokePaint.setTextSize(fontSize);
+    	
+    	TextPaint fontPaint = new TextPaint();
+    	fontPaint.setColor(Color.BLACK);
+    	fontPaint.setAntiAlias(true);
+    	fontPaint.setTypeface(Typeface.DEFAULT);
+    	fontPaint.setTextSize(fontSize);
     	
     	ConferenceTrack track = mConfDay.tracks.get(trackNum);
-    	int numEvents = track.events.size();
-    	for (int e=0; e < numEvents; e++) {
-    		ConferenceEvent event = track.events.get(e);
-
+    	for (ConferenceEvent event : track.events) {
     		int relStartHour = event.startHour - mFirstHour;
     		int relEndHour = event.endHour - mFirstHour;
     		
@@ -172,14 +176,29 @@ public class EventScheduleView extends View {
     		int uly = mTimelineHeight + trackNum * mTrackHeight + mPadding;
     		int lrx = mBorder + relEndHour * mHourWidth + event.endMin * mHourWidth / 60 - mPadding;
     		int lry = mTimelineHeight + (trackNum+1) * mTrackHeight - mPadding;
-
+    		int width = lrx - ulx;   
+    		
     		RectF rect = new RectF(ulx, uly, lrx, lry);
+
+    		if (canvas.quickReject(rect, Canvas.EdgeType.AA)) {
+    			continue;
+    		}
+    		
+    		// Draw box
     		canvas.drawRoundRect(rect, 7, 7, fillPaint);
     		canvas.drawRoundRect(rect, 7, 7, strokePaint);
 
+    		// Title
+    		fontPaint.setTypeface(Typeface.DEFAULT_BOLD);
+    		StaticLayout layout = new StaticLayout(event.title, fontPaint, lrx-ulx-10, Layout.Alignment.ALIGN_NORMAL, 1.0f, 1.0f, true);
+    		Matrix m = canvas.getMatrix();
+    		canvas.translate(ulx+5, uly);
+    		layout.draw(canvas);
+    		canvas.setMatrix(m);
+    		
     		// Author
-    		canvas.drawText(event.author, ulx+5, uly+fontSize, strokePaint);
-    		canvas.drawText(event.title, ulx+5, uly+2*fontSize, strokePaint);
+    		fontPaint.setTypeface(Typeface.DEFAULT);
+    		canvas.drawText(event.author, ulx+5, lry-2, strokePaint);
     	}
     }
     
