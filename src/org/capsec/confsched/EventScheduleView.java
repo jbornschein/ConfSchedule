@@ -177,28 +177,30 @@ public class EventScheduleView extends View {
     		int lrx = mBorder + relEndHour * mHourWidth + event.endMin * mHourWidth / 60 - mPadding;
     		int lry = mTimelineHeight + (trackNum+1) * mTrackHeight - mPadding;
     		int width = lrx - ulx;   
+    		int height = lry - uly;
     		
-    		RectF rect = new RectF(ulx, uly, lrx, lry);
-
-    		if (canvas.quickReject(rect, Canvas.EdgeType.AA)) {
+    		if (canvas.quickReject(ulx, uly, lrx, lry, Canvas.EdgeType.AA)) {
     			continue;
     		}
+
+    		Matrix savedMatrix = canvas.getMatrix();
+    		canvas.translate(ulx, uly);
     		
     		// Draw box
+    		RectF rect = new RectF(0, 0, width, height);
     		canvas.drawRoundRect(rect, 7, 7, fillPaint);
     		canvas.drawRoundRect(rect, 7, 7, strokePaint);
 
     		// Title
     		fontPaint.setTypeface(Typeface.DEFAULT_BOLD);
-    		StaticLayout layout = new StaticLayout(event.title, fontPaint, lrx-ulx-10, Layout.Alignment.ALIGN_NORMAL, 1.0f, 1.0f, true);
-    		Matrix m = canvas.getMatrix();
-    		canvas.translate(ulx+5, uly);
+    		StaticLayout layout = new StaticLayout(event.title, fontPaint, width-10, Layout.Alignment.ALIGN_NORMAL, 1.0f, 1.0f, true);
     		layout.draw(canvas);
-    		canvas.setMatrix(m);
     		
     		// Author
     		fontPaint.setTypeface(Typeface.DEFAULT);
     		canvas.drawText(event.author, ulx+5, lry-2, strokePaint);
+
+    		canvas.setMatrix(savedMatrix);
     	}
     }
     

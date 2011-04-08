@@ -3,9 +3,6 @@
  */
 package org.capsec.confsched.data;
 
-import java.util.Calendar;
-import java.util.Date;
-
 /**
  * @author Joerg Bornschein
  *

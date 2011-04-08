@@ -4,7 +4,6 @@
 package org.capsec.confsched.data;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Joerg Bornschein
