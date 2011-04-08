@@ -13,24 +13,32 @@ import org.capsec.confsched.data.ConferenceTrack;
 
 
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 /**
  * EventScheduleView
  */
 public class EventScheduleView extends View {
-
+	final static String TAG = "ConfSchdView";
+	
+	
+	public ConferenceEvent selectedEvent = null;
+	
 	/**
 	 * General information about the schedule to be drawn
 	 */
@@ -49,7 +57,6 @@ public class EventScheduleView extends View {
 	protected int mTimelineHeight = 30;
 	protected int mTrackHeight= 140;
 	protected int mHourWidth = 300;
-	
 	
     public EventScheduleView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
@@ -76,6 +83,48 @@ public class EventScheduleView extends View {
     	
     	invalidate();
     }
+    
+    private RectF calcTrackRect(int trackNum) {
+    	int totalHours = mLastHour - mFirstHour;
+    	int left   = mBorder;
+    	int right  = mBorder + totalHours * mHourWidth;
+    	int top    = mTimelineHeight + trackNum * mTrackHeight;
+    	int bottom = mTimelineHeight + (trackNum+1) * mTrackHeight;
+    	
+    	return new RectF(left, top, right, bottom);
+    }
+    
+    private RectF calcEventRect(int trackNum, ConferenceEvent event) {
+		int relStartHour = event.startHour - mFirstHour;
+		int relEndHour = event.endHour - mFirstHour;
+		
+		int left   = mBorder + relStartHour * mHourWidth + event.startMin * mHourWidth / 60 + mPadding;
+		int right  = mBorder + relEndHour * mHourWidth + event.endMin * mHourWidth / 60 - mPadding;
+		int top    = mTimelineHeight + trackNum * mTrackHeight + mPadding;
+		int bottom = mTimelineHeight + (trackNum+1) * mTrackHeight - mPadding;
+    	
+    	return new RectF(left, top, right, bottom);
+    }
+    
+    private ConferenceEvent findEventByCoords(float x, float y) {
+    	for(int t=0; t < mNumTracks; t++) {
+    		RectF trackRect = calcTrackRect(t);
+    		if (y < trackRect.top || y > trackRect.bottom)
+    			continue;
+    		
+    		for (ConferenceEvent event : mConfDay.tracks.get(t).events) {
+    			RectF eventRect = calcEventRect(t, event);
+    			if (x > eventRect.left && x < eventRect.right) {
+    				// Found the tapped event!
+    				return event;
+    			}
+    		}
+    	}
+		Log.d(TAG, "Tapped event not found!");
+    	return null;
+    }
+    
+    
     
     /**
      * onMeasure returns the preferred widget size
@@ -108,6 +157,40 @@ public class EventScheduleView extends View {
 		mHourWidth = (width - 2 * mBorder) / totalHours;
     	
     	setMeasuredDimension(width, height);
+    }
+    
+    public boolean onTouchEvent(MotionEvent ev) {
+    	int action = ev.getAction();
+    	
+    	if (action == MotionEvent.ACTION_UP) {
+    		float x = ev.getX();
+    		float y = ev.getY();
+    		
+    		ConferenceEvent cEvent = findEventByCoords(x, y);
+    		if (cEvent != null) {
+    			// Display dialog...
+				Log.d(TAG, "Found the event: "+cEvent.title);
+				selectedEvent = cEvent;
+				performClick();
+    		}
+    	};
+  		return true;
+
+    	/*
+    	if (action == MotionEvent.ACTION_DOWN) {
+        	Log.d(TAG, "Received ACTION_DOWN event");
+        	return true;
+    	} else if (action == MotionEvent.ACTION_MOVE) {
+        	Log.d(TAG, "Received ACTION_MOVE event");
+        	return false;
+    	} else if (action == MotionEvent.ACTION_UP) {
+    		Log.d(TAG, "Received ACTION_UP event");
+    		return true;
+    	} else {
+    		Log.d(TAG, "Unknown TouchEvent");
+    	}
+    	return true;
+    	*/
     }
 
     /**
@@ -149,7 +232,6 @@ public class EventScheduleView extends View {
      */
     protected void drawTrack(int trackNum, Canvas canvas) {
     	int fontSize = 16;
-
     	
     	Paint fillPaint = new Paint();
     	fillPaint.setColor(Color.WHITE);
@@ -169,36 +251,32 @@ public class EventScheduleView extends View {
     	
     	ConferenceTrack track = mConfDay.tracks.get(trackNum);
     	for (ConferenceEvent event : track.events) {
-    		int relStartHour = event.startHour - mFirstHour;
-    		int relEndHour = event.endHour - mFirstHour;
+    		RectF rect = calcEventRect(trackNum, event);
     		
-    		int ulx = mBorder + relStartHour * mHourWidth + event.startMin * mHourWidth / 60 + mPadding;
-    		int uly = mTimelineHeight + trackNum * mTrackHeight + mPadding;
-    		int lrx = mBorder + relEndHour * mHourWidth + event.endMin * mHourWidth / 60 - mPadding;
-    		int lry = mTimelineHeight + (trackNum+1) * mTrackHeight - mPadding;
-    		int width = lrx - ulx;   
-    		int height = lry - uly;
+    		int width  = (int)(rect.right - rect.left);   
+    		int height = (int)(rect.bottom - rect.top);
     		
-    		if (canvas.quickReject(ulx, uly, lrx, lry, Canvas.EdgeType.AA)) {
+    		if (canvas.quickReject(rect, Canvas.EdgeType.AA)) {
     			continue;
     		}
 
     		Matrix savedMatrix = canvas.getMatrix();
-    		canvas.translate(ulx, uly);
+    		canvas.translate(rect.left, rect.top);
     		
     		// Draw box
-    		RectF rect = new RectF(0, 0, width, height);
-    		canvas.drawRoundRect(rect, 7, 7, fillPaint);
-    		canvas.drawRoundRect(rect, 7, 7, strokePaint);
+    		RectF boxRect = new RectF(0, 0, width, height);
+    		canvas.drawRoundRect(boxRect, 7, 7, fillPaint);
+    		canvas.drawRoundRect(boxRect, 7, 7, strokePaint);
 
     		// Title
     		fontPaint.setTypeface(Typeface.DEFAULT_BOLD);
     		StaticLayout layout = new StaticLayout(event.title, fontPaint, width-10, Layout.Alignment.ALIGN_NORMAL, 1.0f, 1.0f, true);
+    		canvas.translate(5, 0);    // 
     		layout.draw(canvas);
     		
     		// Author
     		fontPaint.setTypeface(Typeface.DEFAULT);
-    		canvas.drawText(event.author, ulx+5, lry-2, strokePaint);
+    		canvas.drawText(event.author, 0, height-5, strokePaint);
 
     		canvas.setMatrix(savedMatrix);
     	}

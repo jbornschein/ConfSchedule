@@ -15,15 +15,20 @@ public final class R {
         public static final int leds=0x7f020001;
     }
     public static final class id {
-        public static final int day_next=0x7f060005;
-        public static final int day_prev=0x7f060004;
-        public static final int eventSchedule=0x7f060002;
-        public static final int horizontalScrollView1=0x7f060000;
-        public static final int linearLayout2=0x7f060003;
-        public static final int scrollLayout=0x7f060001;
+        public static final int abstract_view=0x7f060001;
+        public static final int day_next=0x7f060009;
+        public static final int day_prev=0x7f060008;
+        public static final int eventSchedule=0x7f060006;
+        public static final int fav_button=0x7f060002;
+        public static final int horizontalScrollView1=0x7f060004;
+        public static final int imageButton1=0x7f060003;
+        public static final int layout_root2=0x7f060000;
+        public static final int linearLayout2=0x7f060007;
+        public static final int scrollLayout=0x7f060005;
     }
     public static final class layout {
-        public static final int main=0x7f030000;
+        public static final int dialog_abstract=0x7f030000;
+        public static final int main=0x7f030001;
     }
     public static final class string {
         public static final int app_name=0x7f050001;

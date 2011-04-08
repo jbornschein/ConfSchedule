@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/layout_root2"
+  android:padding="10dp"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:minWidth="200dp" 
+  android:minHeight="300dp"
+  android:orientation="horizontal">
+    <TextView android:layout_width="wrap_content" android:layout_height="fill_parent" android:id="@+id/abstract_view" android:text="TextView"></TextView>
+    <ToggleButton android:text="ToggleButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/fav_button"></ToggleButton>
+    <ImageButton android:id="@+id/imageButton1" android:src="@drawable/icon" android:layout_width="wrap_content" android:layout_height="wrap_content"></ImageButton>
+</LinearLayout>
