@@ -3,4 +3,5 @@
     <string name="hello">Hello World, ConfSched!</string>
     <string name="app_name">ConfSched</string>
     <string name="day">Day</string>
+    <string name="about">&lt;b&gt;ConfereceApp&lt;/b&gt; was written by Jörg Bornschein, (c) 2011, GPL Version 3 </string>
 </resources>

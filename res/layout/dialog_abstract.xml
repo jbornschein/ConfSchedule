@@ -1,14 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
-  android:id="@+id/layout_root2"
+  android:id="@+id/abstract_layout"
   android:padding="10dp"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
-  android:minWidth="200dp" 
-  android:minHeight="300dp"
   android:orientation="horizontal">
-    <TextView android:layout_width="wrap_content" android:layout_height="fill_parent" android:id="@+id/abstract_view" android:text="TextView"></TextView>
-    <ToggleButton android:text="ToggleButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/fav_button"></ToggleButton>
-    <ImageButton android:id="@+id/imageButton1" android:src="@drawable/icon" android:layout_width="wrap_content" android:layout_height="wrap_content"></ImageButton>
+  <LinearLayout 
+  	android:id="@+id/linearLayout2"
+  	android:orientation="vertical"
+  	android:layout_height="fill_parent" 
+  	android:layout_width="wrap_content" 
+  	android:layout_weight="10">
+  	  <TextView
+  	  	android:id="@+id/abstract_title"
+  	  	android:layout_height="wrap_content"
+  	  	android:layout_width="wrap_content"
+  	  	android:text="Title of Event" android:textSize="20dp" android:textStyle="bold"/>
+  	  <TextView
+  	  	android:id="@+id/abstract_author"
+  	  	android:layout_height="wrap_content"
+  	  	android:layout_width="wrap_content"
+  	  	android:text="Author of Event" android:layout_marginBottom="8dp"/>
+  	  <ScrollView
+  		android:id="@+id/scrollView1" 
+  		android:layout_height="fill_parent" 
+  		android:layout_width="wrap_content"
+  		android:layout_weight="10">
+    		<TextView 
+    			android:id="@+id/abstract_text" 
+    			android:layout_width="fill_parent" 
+    			android:layout_height="fill_parent" 
+    			android:text=""/>
+  	  </ScrollView>
+  </LinearLayout>
+  <LinearLayout 
+  	android:orientation="vertical"
+  	android:layout_height="fill_parent" 
+  	android:layout_width="60dp" 
+  	android:id="@+id/linearLayout3"
+  	android:layout_weight="0">
+      <ToggleButton 
+      	android:text="ToggleButton" 
+      	android:id="@+id/toggleButton1" 
+      	android:layout_width="wrap_content" 
+      	android:layout_height="wrap_content"/>
+      <View android:id="@+id/view1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="10"></View>
+      <ImageButton android:src="@drawable/icon" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/abstract_close_btn"></ImageButton>
+  		
+  	
+  </LinearLayout>
+
+
 </LinearLayout>

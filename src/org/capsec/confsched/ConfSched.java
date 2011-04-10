@@ -10,15 +10,19 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 
 
 public class ConfSched extends Activity {
 	private static final String TAG = "ConfSched";
+	
 	private static final int DIALOG_ABSTRACT = 1;
+	private static final int DIALOG_ABOUT = 2;
 		
 	// 
     private Conference mConference;
@@ -60,8 +64,12 @@ public class ConfSched extends Activity {
     	Dialog dialog;
     	switch(id) {
     	case DIALOG_ABSTRACT:
+    		dialog = new AbstractDialog(this);
+    		
+    		break;
+    	case DIALOG_ABOUT:
     		dialog = new Dialog(this);
-    		dialog.setContentView(R.layout.dialog_abstract);
+    		dialog.setContentView(R.layout.dialog_about);
     		break;
     	default:
     		dialog = super.onCreateDialog(id);
@@ -72,11 +80,8 @@ public class ConfSched extends Activity {
     protected void onPrepareDialog(int id, Dialog dialog) {
     	switch(id) {
     	case DIALOG_ABSTRACT:
-			ConferenceEvent event = mScheduleView.selectedEvent;
-
-			dialog.setTitle(event.title);
-    		TextView tv = (TextView) dialog.findViewById(R.id.abstract_view);
-			tv.setText(event.abstractText);
+    		AbstractDialog ad = (AbstractDialog)dialog;
+    		ad.setEvent(mScheduleView.selectedEvent);
 			break;
 		default:
 			super.onPrepareDialog(id, dialog);
