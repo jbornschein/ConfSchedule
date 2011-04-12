@@ -12,6 +12,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
@@ -58,8 +60,19 @@ public class ConfSched extends Activity {
     }
     
     /**
+     * Create main menu
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return true;
+    } 
+    
+    /**
      * Create the various dialogs...
      */
+    @Override
     protected Dialog onCreateDialog(int id) {
     	Dialog dialog;
     	switch(id) {
