@@ -14,6 +14,7 @@ import android.text.Layout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
@@ -70,7 +71,24 @@ public class ConfSched extends Activity {
     } 
     
     /**
-     * Create the various dialogs...
+     * on menu option selectd..
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+        case R.id.menu_update:
+        	return true;
+        case R.id.menu_about:
+        	showDialog(DIALOG_ABOUT);
+        	return true;
+        default:
+        	return super.onOptionsItemSelected(item);
+        }
+    }
+    
+    /**
+     * Create and prepare various dialogs...
      */
     @Override
     protected Dialog onCreateDialog(int id) {
@@ -78,10 +96,10 @@ public class ConfSched extends Activity {
     	switch(id) {
     	case DIALOG_ABSTRACT:
     		dialog = new AbstractDialog(this);
-    		
     		break;
     	case DIALOG_ABOUT:
     		dialog = new Dialog(this);
+    		dialog.setTitle("About this application");
     		dialog.setContentView(R.layout.dialog_about);
     		break;
     	default:

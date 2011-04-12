@@ -12,9 +12,10 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_menu_info_details=0x7f020000;
-        public static final int ic_menu_refresh=0x7f020001;
-        public static final int icon=0x7f020002;
-        public static final int leds=0x7f020003;
+        public static final int ic_menu_preferences=0x7f020001;
+        public static final int ic_menu_refresh=0x7f020002;
+        public static final int icon=0x7f020003;
+        public static final int leds=0x7f020004;
     }
     public static final class id {
         public static final int abstract_author=0x7f070005;
@@ -26,15 +27,16 @@ public final class R {
         public static final int day_prev=0x7f070010;
         public static final int eventSchedule=0x7f07000f;
         public static final int horizontalScrollView1=0x7f07000d;
-        public static final int imageView1=0x7f070001;
+        public static final int imageView1=0x7f070000;
         public static final int linearLayout2=0x7f070003;
         public static final int linearLayout3=0x7f070008;
         public static final int main_layout=0x7f07000c;
-        public static final int menu_about=0x7f070013;
+        public static final int menu_about=0x7f070014;
+        public static final int menu_settings=0x7f070013;
         public static final int menu_update=0x7f070012;
         public static final int scrollLayout=0x7f07000e;
         public static final int scrollView1=0x7f070006;
-        public static final int textView1=0x7f070000;
+        public static final int textView1=0x7f070001;
         public static final int toggleButton1=0x7f070009;
         public static final int view1=0x7f07000a;
     }
