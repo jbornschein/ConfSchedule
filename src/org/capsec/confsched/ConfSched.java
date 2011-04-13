@@ -3,6 +3,7 @@ package org.capsec.confsched;
 import java.io.IOException;
 
 import org.capsec.confsched.data.Conference;
+import org.capsec.confsched.data.ConferenceDay;
 import org.capsec.confsched.data.ConferenceEvent;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -18,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -29,6 +31,7 @@ public class ConfSched extends Activity {
 		
 	// 
     private Conference mConference;
+    private int mCurrentDay = 0;
     private EventScheduleView mScheduleView;
     
 	/** 
@@ -48,7 +51,32 @@ public class ConfSched extends Activity {
     			showDialog(DIALOG_ABSTRACT);
 			}
     	});
+        
+        Button btn = (Button) findViewById(R.id.btn_day_prev);
+        btn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (mCurrentDay > 0) {
+					mCurrentDay -= 1;
+					ConferenceDay confDay = mConference.days.get(mCurrentDay);
+					mScheduleView.setConferenceData(confDay);
+				}
+			}
+        });
 
+        btn = (Button) findViewById(R.id.btn_day_next);
+        btn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				int totalDays = mConference.days.size();
+				if (mCurrentDay < (totalDays-1)) {
+					mCurrentDay += 1;
+					ConferenceDay confDay = mConference.days.get(mCurrentDay);
+					mScheduleView.setConferenceData(confDay);
+				}
+			}
+        });
+        
     	// Parse XML file and set data
         try {
         	mConference = Conference.parseXML(context);

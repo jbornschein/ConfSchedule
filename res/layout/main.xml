@@ -5,15 +5,51 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:background="@drawable/leds">
-    <HorizontalScrollView android:layout_width="fill_parent" android:id="@+id/horizontalScrollView1" android:layout_height="wrap_content" android:layout_weight="10">
-        <LinearLayout android:id="@+id/scrollLayout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="horizontal">
-            <org.capsec.confsched.EventScheduleView
-               android:layout_width="wrap_content" android:layout_height="fill_parent" android:id="@+id/eventSchedule">
+    <HorizontalScrollView 
+    	android:layout_width="fill_parent" 
+    	android:id="@+id/horizontalScrollView1" 
+    	android:layout_height="wrap_content" 
+    	android:layout_weight="10">
+    	<LinearLayout
+    		android:layout_height="fill_parent"
+    		android:layout_width="fill_parent">
+    		<org.capsec.confsched.EventScheduleView
+               android:layout_width="wrap_content" 
+               android:layout_height="fill_parent" 
+               android:id="@+id/eventSchedule">
             </org.capsec.confsched.EventScheduleView>
-        </LinearLayout>
+    		
+        </LinearLayout> 
     </HorizontalScrollView>
-    <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout2" android:layout_height="60dip" android:layout_gravity="right">
-        <Button android:text="&lt;&lt;" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/day_prev"></Button>
-        <Button android:text="&gt;&gt;" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/day_next" ></Button>
+    <LinearLayout 
+    	android:id="@+id/linearLayout2"
+    	android:layout_width="fill_parent" 
+    	android:layout_height="60dip">
+    	<TextView
+    		android:id="@+id/spacer"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_weight="5"/>
+        <Button 
+        	android:text="&lt;&lt;" 
+        	android:layout_height="wrap_content" 
+        	android:layout_width="wrap_content" 
+        	android:id="@+id/btn_day_prev" android:paddingRight="20dp" android:paddingLeft="20dp"/>
+        <TextView 
+        	android:id="@+id/textView1" 
+        	android:layout_width="100dp" 
+        	android:layout_height="wrap_content"
+        	android:text="Day 1" 
+        	android:textSize="18dp" 
+        	android:textStyle="bold"/>
+        <Button android:text="&gt;&gt;" 
+        	android:layout_height="wrap_content" 
+        	android:layout_width="wrap_content" 
+        	android:id="@+id/btn_day_next" android:paddingRight="20dp" android:paddingLeft="20dp"/>
+    	<TextView
+    		android:id="@+id/spacer"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_weight="5"/>
     </LinearLayout>
 </LinearLayout>
