@@ -23,7 +23,7 @@ import android.util.Log;
  */
 public class Conference {
 	private static final String TAG = "ConfSched";
-	private enum ParserState {Top, Conference, ConferenceName, ConferenceURL, Day, DayDate, 
+	private enum ParserState {Top, Conference, ConferenceName, ConferenceURL, Day, DayDate, DayName, 
 		Track, TrackRoom, Event, EventTitle, EventAuthor, EventStart, EventEnd, EventAbstract };
 	
 	public String name = "";
@@ -78,6 +78,8 @@ public class Conference {
 				case Day:
 					if (tag.equalsIgnoreCase("date")) {
 						state = ParserState.DayDate;
+					} else if (tag.equalsIgnoreCase("name")) {
+						state = ParserState.DayName;
 					} else if (tag.equalsIgnoreCase("track")) {
 						state = ParserState.Track;
 						confTrack = new ConferenceTrack();
@@ -147,6 +149,9 @@ public class Conference {
 				case DayDate:
 					state = ParserState.Day;
 					break;
+				case DayName:
+					state = ParserState.Day;
+					break;
 				case Day:
 					conf.days.add(confDay);
 					confDay = null;
@@ -174,6 +179,9 @@ public class Conference {
 					case DayDate:
 						SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
 						confDay.date = sdf.parse(xpp.getText());
+						break;
+					case DayName:
+						confDay.name += xpp.getText();
 						break;
 					case TrackRoom:
 						confTrack.room += xpp.getText();

@@ -33,6 +33,7 @@ public class ConfSched extends Activity {
     private Conference mConference;
     private int mCurrentDay = 0;
     private EventScheduleView mScheduleView;
+    private TextView mDayText;
     
 	/** 
 	 * Called when the activity is first created. 
@@ -51,15 +52,15 @@ public class ConfSched extends Activity {
     			showDialog(DIALOG_ABSTRACT);
 			}
     	});
+    	
+    	mDayText = (TextView) findViewById(R.id.day_text); 
         
         Button btn = (Button) findViewById(R.id.btn_day_prev);
         btn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				if (mCurrentDay > 0) {
-					mCurrentDay -= 1;
-					ConferenceDay confDay = mConference.days.get(mCurrentDay);
-					mScheduleView.setConferenceData(confDay);
+					setConferenceDay(mCurrentDay-1);
 				}
 			}
         });
@@ -70,9 +71,7 @@ public class ConfSched extends Activity {
 			public void onClick(View v) {
 				int totalDays = mConference.days.size();
 				if (mCurrentDay < (totalDays-1)) {
-					mCurrentDay += 1;
-					ConferenceDay confDay = mConference.days.get(mCurrentDay);
-					mScheduleView.setConferenceData(confDay);
+					setConferenceDay(mCurrentDay+1);
 				}
 			}
         });
@@ -80,12 +79,13 @@ public class ConfSched extends Activity {
     	// Parse XML file and set data
         try {
         	mConference = Conference.parseXML(context);
-        	mScheduleView.setConferenceData(mConference.days.get(0));
+        	setConferenceDay(0);
         } catch (IOException e) {
         	Log.e(TAG, e.getMessage());
         } catch (XmlPullParserException e) {
         	Log.e(TAG, e.getMessage());
         }
+        
     }
     
     /**
@@ -145,5 +145,20 @@ public class ConfSched extends Activity {
 		default:
 			super.onPrepareDialog(id, dialog);
     	}
+    }
+
+    private void setConferenceDay(int day) {
+    	int totalDays = mConference.days.size();
+    	if (day >= totalDays) {
+    		day = totalDays - 1;
+    	}
+    	if (day < 0) {
+    		day = 0;
+    	}
+    	ConferenceDay confDay = mConference.days.get(day);
+    	
+    	mCurrentDay = day;
+    	mScheduleView.setConferenceData(confDay);
+    	mDayText.setText(confDay.name);
     }
 }

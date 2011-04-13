@@ -12,5 +12,6 @@ import java.util.Date;
  */
 public class ConferenceDay {
 	public Date date;
+	public String name = "";
 	public ArrayList<ConferenceTrack> tracks = new ArrayList<ConferenceTrack>();
 }

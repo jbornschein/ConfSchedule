@@ -4,202 +4,87 @@
   <url>http://www.capsec.org/TestConf</url>
   <day>
     <date>2011-05-23</date>
+    <name>Day 1</name>
     <track>
       <room>Room 0</room>
       <event>
-        <title>Introduction to persistant computing </title>
-        <author>Jane Mustermann</author>
-        <start>9:00</start>
-        <end>9:45</end>
-      </event>
-      <event>
-        <title>Workshop on wrong conclusions </title>
-        <author>Jane Mustermann</author>
-        <start>10:00</start>
-        <end>11:30</end>
-        <abstract>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</abstract>
-      </event>
-      <event>
-        <title>Introduction to funny math </title>
-        <author>Boring Jack</author>
-        <start>11:30</start>
-        <end>13:00</end>
-        <abstract>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</abstract>
-      </event>
-      <event>
-        <title>Introduction to funny math </title>
-        <author>Jane Mustermann</author>
-        <start>13:15</start>
-        <end>14:15</end>
-      </event>
-      <event>
-        <title>Introduction to funny math </title>
-        <author>Jane Mustermann</author>
-        <start>14:15</start>
-        <end>15:45</end>
-      </event>
-      <event>
-        <title>Workshop on wrong conclusions </title>
-        <author>Boring Jack</author>
-        <start>16:15</start>
-        <end>17:00</end>
-      </event>
-    </track>
-    <track>
-      <room>Room 1</room>
-      <event>
-        <title>Progress in persistant computing </title>
-        <author>Jane Mustermann</author>
-        <start>9:00</start>
-        <end>10:00</end>
-      </event>
-      <event>
-        <title>Introduction to funny math </title>
-        <author>Boring Jack</author>
-        <start>10:30</start>
-        <end>12:00</end>
-      </event>
-      <event>
-        <title>Progress in wrong conclusions </title>
-        <author>John Bill</author>
-        <start>12:00</start>
-        <end>13:00</end>
-      </event>
-      <event>
-        <title>Introduction to funny math </title>
-        <author>Jane Mustermann</author>
-        <start>13:30</start>
-        <end>14:30</end>
-      </event>
-      <event>
-        <title>Progress in wrong conclusions </title>
-        <author>Foo Bar</author>
-        <start>14:45</start>
-        <end>16:15</end>
-      </event>
-      <event>
-        <title>Workshop on persistant computing </title>
-        <author>Boring Jack</author>
-        <start>16:45</start>
-        <end>17:45</end>
-      </event>
-    </track>
-    <track>
-      <room>Room 2</room>
-      <event>
-        <title>Introduction to persistant computing </title>
-        <author>Jane Mustermann</author>
-        <start>9:00</start>
-        <end>10:30</end>
-      </event>
-      <event>
-        <title>Progress in funny math </title>
-        <author>Foo Bar</author>
-        <start>11:00</start>
-        <end>11:45</end>
-      </event>
-      <event>
-        <title>Introduction to funny math </title>
-        <author>John Bill</author>
-        <start>11:45</start>
-        <end>12:30</end>
-      </event>
-      <event>
-        <title>Introduction to funny math </title>
-        <author>Jane Mustermann</author>
-        <start>12:30</start>
-        <end>14:00</end>
-      </event>
-      <event>
-        <title>Workshop on persistant computing </title>
-        <author>Foo Bar</author>
-        <start>14:30</start>
-        <end>15:15</end>
-      </event>
-      <event>
-        <title>Progress in funny math </title>
-        <author>Boring Jack</author>
-        <start>15:30</start>
-        <end>17:00</end>
-      </event>
-    </track>
-  </day>
-  <day>
-    <date>2011-05-24</date>
-    <track>
-      <room>Room 0</room>
-      <event>
-        <title>Progress in wrong conclusions </title>
+        <title>Introduction to wrong conclusions </title>
         <author>Foo Bar</author>
         <start>9:00</start>
         <end>10:00</end>
       </event>
       <event>
-        <title>Workshop on wrong conclusions </title>
-        <author>John Bill</author>
+        <title>Introduction to persistant computing </title>
+        <author>Boring Jack</author>
         <start>10:00</start>
         <end>10:45</end>
       </event>
       <event>
-        <title>Progress in funny math </title>
+        <title>Workshop on wrong conclusions </title>
         <author>Jane Mustermann</author>
-        <start>11:15</start>
+        <start>11:00</start>
         <end>12:00</end>
       </event>
       <event>
         <title>Workshop on persistant computing </title>
-        <author>Boring Jack</author>
+        <author>John Bill</author>
         <start>12:30</start>
-        <end>14:00</end>
+        <end>13:15</end>
       </event>
       <event>
-        <title>Workshop on funny math </title>
+        <title>Introduction to wrong conclusions </title>
         <author>Jane Mustermann</author>
-        <start>14:15</start>
-        <end>15:15</end>
+        <start>13:30</start>
+        <end>15:00</end>
       </event>
       <event>
-        <title>Introduction to funny math </title>
+        <title>Introduction to persistant computing </title>
+        <author>John Bill</author>
+        <start>15:15</start>
+        <end>16:15</end>
+      </event>
+      <event>
+        <title>Introduction to wrong conclusions </title>
         <author>Foo Bar</author>
-        <start>15:45</start>
-        <end>17:15</end>
+        <start>16:45</start>
+        <end>18:15</end>
       </event>
     </track>
     <track>
       <room>Room 1</room>
       <event>
-        <title>Progress in persistant computing </title>
-        <author>Foo Bar</author>
+        <title>Introduction to persistant computing </title>
+        <author>Boring Jack</author>
         <start>9:00</start>
         <end>10:30</end>
       </event>
       <event>
-        <title>Progress in funny math </title>
-        <author>Boring Jack</author>
+        <title>Workshop on persistant computing </title>
+        <author>Foo Bar</author>
         <start>10:30</start>
         <end>12:00</end>
       </event>
       <event>
-        <title>Progress in funny math </title>
-        <author>Boring Jack</author>
-        <start>12:00</start>
-        <end>13:00</end>
+        <title>Progress in persistant computing </title>
+        <author>Foo Bar</author>
+        <start>12:30</start>
+        <end>13:30</end>
       </event>
       <event>
-        <title>Introduction to persistant computing </title>
+        <title>Introduction to funny math </title>
+        <author>Foo Bar</author>
+        <start>13:45</start>
+        <end>14:45</end>
+      </event>
+      <event>
+        <title>Workshop on wrong conclusions </title>
         <author>John Bill</author>
-        <start>13:15</start>
-        <end>14:00</end>
+        <start>14:45</start>
+        <end>15:30</end>
       </event>
       <event>
         <title>Progress in wrong conclusions </title>
-        <author>Jane Mustermann</author>
-        <start>14:30</start>
-        <end>16:00</end>
-      </event>
-      <event>
-        <title>Introduction to wrong conclusions </title>
-        <author>Jane Mustermann</author>
+        <author>Boring Jack</author>
         <start>16:00</start>
         <end>17:30</end>
       </event>
@@ -207,51 +92,52 @@
     <track>
       <room>Room 2</room>
       <event>
-        <title>Introduction to wrong conclusions </title>
+        <title>Progress in wrong conclusions </title>
         <author>Jane Mustermann</author>
         <start>9:00</start>
         <end>9:45</end>
       </event>
       <event>
-        <title>Workshop on persistant computing </title>
-        <author>Foo Bar</author>
-        <start>10:00</start>
-        <end>10:45</end>
-      </event>
-      <event>
-        <title>Progress in persistant computing </title>
-        <author>Foo Bar</author>
-        <start>10:45</start>
-        <end>11:30</end>
-      </event>
-      <event>
-        <title>Workshop on wrong conclusions </title>
-        <author>Boring Jack</author>
-        <start>11:45</start>
-        <end>13:15</end>
-      </event>
-      <event>
-        <title>Workshop on wrong conclusions </title>
-        <author>Boring Jack</author>
-        <start>13:15</start>
-        <end>14:45</end>
-      </event>
-      <event>
-        <title>Workshop on wrong conclusions </title>
-        <author>Foo Bar</author>
-        <start>15:00</start>
-        <end>15:45</end>
-      </event>
-      <event>
         <title>Workshop on wrong conclusions </title>
         <author>Jane Mustermann</author>
-        <start>16:15</start>
-        <end>17:00</end>
+        <start>10:00</start>
+        <end>11:00</end>
+      </event>
+      <event>
+        <title>Workshop on persistant computing </title>
+        <author>Jane Mustermann</author>
+        <start>11:15</start>
+        <end>12:00</end>
+      </event>
+      <event>
+        <title>Progress in wrong conclusions </title>
+        <author>Boring Jack</author>
+        <start>12:15</start>
+        <end>13:00</end>
+      </event>
+      <event>
+        <title>Introduction to wrong conclusions </title>
+        <author>Foo Bar</author>
+        <start>13:15</start>
+        <end>14:00</end>
+      </event>
+      <event>
+        <title>Workshop on wrong conclusions </title>
+        <author>Foo Bar</author>
+        <start>14:30</start>
+        <end>15:30</end>
+      </event>
+      <event>
+        <title>Progress in funny math </title>
+        <author>Foo Bar</author>
+        <start>16:00</start>
+        <end>17:30</end>
       </event>
     </track>
   </day>
   <day>
-    <date>2011-06-25</date>
+    <date>2011-05-24</date>
+    <name>Day 2</name>
     <track>
       <room>Room 0</room>
       <event>
@@ -261,79 +147,212 @@
         <end>10:00</end>
       </event>
       <event>
-        <title>Introduction to persistant computing </title>
-        <author>Boring Jack</author>
-        <start>10:00</start>
-        <end>11:00</end>
+        <title>Workshop on funny math </title>
+        <author>Foo Bar</author>
+        <start>10:30</start>
+        <end>11:15</end>
       </event>
       <event>
         <title>Progress in wrong conclusions </title>
         <author>John Bill</author>
         <start>11:15</start>
-        <end>12:15</end>
+        <end>12:45</end>
       </event>
       <event>
-        <title>Workshop on funny math </title>
-        <author>Boring Jack</author>
-        <start>12:15</start>
-        <end>13:15</end>
+        <title>Progress in funny math </title>
+        <author>John Bill</author>
+        <start>12:45</start>
+        <end>14:15</end>
       </event>
       <event>
-        <title>Workshop on funny math </title>
-        <author>Boring Jack</author>
-        <start>13:30</start>
-        <end>14:30</end>
-      </event>
-      <event>
-        <title>Workshop on persistant computing </title>
-        <author>Foo Bar</author>
+        <title>Introduction to wrong conclusions </title>
+        <author>Jane Mustermann</author>
         <start>14:30</start>
         <end>15:30</end>
       </event>
       <event>
-        <title>Progress in funny math </title>
-        <author>Jane Mustermann</author>
-        <start>15:30</start>
-        <end>17:00</end>
+        <title>Workshop on wrong conclusions </title>
+        <author>Boring Jack</author>
+        <start>15:45</start>
+        <end>17:15</end>
       </event>
     </track>
     <track>
       <room>Room 1</room>
       <event>
-        <title>Progress in persistant computing </title>
+        <title>Workshop on funny math </title>
         <author>Boring Jack</author>
         <start>9:00</start>
-        <end>9:45</end>
+        <end>10:30</end>
       </event>
       <event>
-        <title>Introduction to wrong conclusions </title>
-        <author>Boring Jack</author>
-        <start>10:00</start>
-        <end>11:00</end>
+        <title>Workshop on funny math </title>
+        <author>Jane Mustermann</author>
+        <start>10:45</start>
+        <end>12:15</end>
+      </event>
+      <event>
+        <title>Progress in wrong conclusions </title>
+        <author>John Bill</author>
+        <start>12:15</start>
+        <end>13:00</end>
+      </event>
+      <event>
+        <title>Introduction to funny math </title>
+        <author>John Bill</author>
+        <start>13:15</start>
+        <end>14:15</end>
       </event>
       <event>
         <title>Workshop on persistant computing </title>
         <author>Boring Jack</author>
-        <start>11:30</start>
-        <end>12:30</end>
+        <start>14:45</start>
+        <end>15:45</end>
       </event>
       <event>
         <title>Progress in funny math </title>
+        <author>Boring Jack</author>
+        <start>15:45</start>
+        <end>16:30</end>
+      </event>
+      <event>
+        <title>Introduction to wrong conclusions </title>
         <author>Jane Mustermann</author>
-        <start>12:30</start>
-        <end>14:00</end>
+        <start>16:30</start>
+        <end>17:15</end>
+      </event>
+    </track>
+    <track>
+      <room>Room 2</room>
+      <event>
+        <title>Workshop on wrong conclusions </title>
+        <author>Foo Bar</author>
+        <start>9:00</start>
+        <end>10:30</end>
+      </event>
+      <event>
+        <title>Introduction to funny math </title>
+        <author>Foo Bar</author>
+        <start>10:45</start>
+        <end>12:15</end>
+      </event>
+      <event>
+        <title>Progress in persistant computing </title>
+        <author>Foo Bar</author>
+        <start>12:15</start>
+        <end>13:45</end>
       </event>
       <event>
         <title>Workshop on funny math </title>
         <author>John Bill</author>
-        <start>14:15</start>
-        <end>15:45</end>
+        <start>14:00</start>
+        <end>15:00</end>
       </event>
       <event>
         <title>Workshop on wrong conclusions </title>
+        <author>Jane Mustermann</author>
+        <start>15:15</start>
+        <end>16:45</end>
+      </event>
+    </track>
+  </day>
+  <day>
+    <date>2011-06-25</date>
+    <name>Day 3</name>
+    <track>
+      <room>Room 0</room>
+      <event>
+        <title>Introduction to funny math </title>
+        <author>Foo Bar</author>
+        <start>9:00</start>
+        <end>9:45</end>
+      </event>
+      <event>
+        <title>Workshop on funny math </title>
+        <author>Jane Mustermann</author>
+        <start>10:15</start>
+        <end>11:00</end>
+      </event>
+      <event>
+        <title>Introduction to persistant computing </title>
+        <author>Foo Bar</author>
+        <start>11:30</start>
+        <end>12:15</end>
+      </event>
+      <event>
+        <title>Progress in funny math </title>
         <author>John Bill</author>
-        <start>16:15</start>
+        <start>12:30</start>
+        <end>13:15</end>
+      </event>
+      <event>
+        <title>Progress in funny math </title>
+        <author>Foo Bar</author>
+        <start>13:15</start>
+        <end>14:45</end>
+      </event>
+      <event>
+        <title>Introduction to funny math </title>
+        <author>Jane Mustermann</author>
+        <start>15:00</start>
+        <end>15:45</end>
+      </event>
+      <event>
+        <title>Introduction to wrong conclusions </title>
+        <author>Foo Bar</author>
+        <start>15:45</start>
+        <end>16:30</end>
+      </event>
+      <event>
+        <title>Workshop on funny math </title>
+        <author>John Bill</author>
+        <start>16:30</start>
         <end>17:15</end>
+      </event>
+    </track>
+    <track>
+      <room>Room 1</room>
+      <event>
+        <title>Introduction to funny math </title>
+        <author>Foo Bar</author>
+        <start>9:00</start>
+        <end>9:45</end>
+      </event>
+      <event>
+        <title>Progress in persistant computing </title>
+        <author>Foo Bar</author>
+        <start>10:15</start>
+        <end>11:15</end>
+      </event>
+      <event>
+        <title>Workshop on funny math </title>
+        <author>Boring Jack</author>
+        <start>11:45</start>
+        <end>12:30</end>
+      </event>
+      <event>
+        <title>Workshop on persistant computing </title>
+        <author>Jane Mustermann</author>
+        <start>12:30</start>
+        <end>13:15</end>
+      </event>
+      <event>
+        <title>Introduction to funny math </title>
+        <author>Jane Mustermann</author>
+        <start>13:15</start>
+        <end>14:45</end>
+      </event>
+      <event>
+        <title>Progress in funny math </title>
+        <author>John Bill</author>
+        <start>15:15</start>
+        <end>16:15</end>
+      </event>
+      <event>
+        <title>Introduction to funny math </title>
+        <author>Boring Jack</author>
+        <start>16:15</start>
+        <end>17:00</end>
       </event>
     </track>
     <track>
@@ -342,42 +361,42 @@
         <title>Introduction to persistant computing </title>
         <author>Boring Jack</author>
         <start>9:00</start>
-        <end>10:30</end>
+        <end>9:45</end>
       </event>
       <event>
-        <title>Progress in persistant computing </title>
+        <title>Progress in wrong conclusions </title>
         <author>John Bill</author>
-        <start>10:30</start>
-        <end>11:15</end>
+        <start>10:00</start>
+        <end>11:00</end>
+      </event>
+      <event>
+        <title>Introduction to wrong conclusions </title>
+        <author>Boring Jack</author>
+        <start>11:30</start>
+        <end>12:30</end>
+      </event>
+      <event>
+        <title>Introduction to funny math </title>
+        <author>John Bill</author>
+        <start>12:45</start>
+        <end>13:30</end>
+      </event>
+      <event>
+        <title>Progress in wrong conclusions </title>
+        <author>Boring Jack</author>
+        <start>13:30</start>
+        <end>14:15</end>
       </event>
       <event>
         <title>Introduction to funny math </title>
         <author>Foo Bar</author>
-        <start>11:30</start>
-        <end>13:00</end>
+        <start>14:15</start>
+        <end>15:45</end>
       </event>
       <event>
-        <title>Progress in funny math </title>
+        <title>Introduction to persistant computing </title>
         <author>Jane Mustermann</author>
-        <start>13:00</start>
-        <end>14:00</end>
-      </event>
-      <event>
-        <title>Progress in persistant computing </title>
-        <author>Foo Bar</author>
-        <start>14:00</start>
-        <end>14:45</end>
-      </event>
-      <event>
-        <title>Workshop on persistant computing </title>
-        <author>Boring Jack</author>
-        <start>15:15</start>
-        <end>16:15</end>
-      </event>
-      <event>
-        <title>Workshop on funny math </title>
-        <author>Jane Mustermann</author>
-        <start>16:30</start>
+        <start>15:45</start>
         <end>17:15</end>
       </event>
     </track>
