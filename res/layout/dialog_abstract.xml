@@ -40,15 +40,22 @@
   	android:layout_width="60dp" 
   	android:id="@+id/linearLayout3"
   	android:layout_weight="0">
-      <ToggleButton 
-      	android:text="ToggleButton" 
-      	android:id="@+id/toggleButton1" 
+  	  <CheckBox android:id="@+id/abstract_fav_btn" 
+        style="?android:attr/starStyle" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />     
+      <View 
+      	android:id="@+id/abstract_spacer1" 
       	android:layout_width="wrap_content" 
-      	android:layout_height="wrap_content"/>
-      <View android:id="@+id/view1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="10"></View>
-      <ImageButton android:src="@drawable/icon" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/abstract_close_btn"></ImageButton>
-  		
-  	
+      	android:layout_height="wrap_content" 
+      	android:layout_weight="10"/>
+      <ImageButton 
+      	android:src="@android:drawable/ic_menu_close_clear_cancel" 
+      	android:layout_height="wrap_content" 
+      	android:layout_width="wrap_content" 
+      	android:id="@+id/abstract_close_btn" 
+      	android:layout_gravity="center" />
   </LinearLayout>
 
 

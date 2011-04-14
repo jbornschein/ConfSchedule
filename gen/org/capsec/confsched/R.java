@@ -20,7 +20,9 @@ public final class R {
     public static final class id {
         public static final int abstract_author=0x7f070005;
         public static final int abstract_close_btn=0x7f07000b;
+        public static final int abstract_fav_btn=0x7f070009;
         public static final int abstract_layout=0x7f070002;
+        public static final int abstract_spacer1=0x7f07000a;
         public static final int abstract_text=0x7f070007;
         public static final int abstract_title=0x7f070004;
         public static final int btn_day_next=0x7f070012;
@@ -38,8 +40,6 @@ public final class R {
         public static final int scrollView1=0x7f070006;
         public static final int spacer=0x7f07000f;
         public static final int textView1=0x7f070001;
-        public static final int toggleButton1=0x7f070009;
-        public static final int view1=0x7f07000a;
     }
     public static final class layout {
         public static final int dialog_about=0x7f030000;

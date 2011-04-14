@@ -14,11 +14,15 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 /**
+ * This dialog displas an conference abstract and allows minimal interaction.
+ * 
  * @author Joerg Bornschein
- *
  */
 public class AbstractDialog extends Dialog {
 	final static String TAG = "ConfApp.AbstractDialog";
+	
+	protected ImageButton closeBtn;
+	protected ImageButton favBtn;
 	
 	public AbstractDialog(Context context, int theme) {
 		super(context, theme);
@@ -35,10 +39,17 @@ public class AbstractDialog extends Dialog {
 		setContentView(R.layout.dialog_abstract);
 		getWindow().setLayout(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
 		
-		ImageButton ib = (ImageButton) findViewById(R.id.abstract_close_btn);
-		ib.setImageResource(android.R.drawable.ic_menu_close_clear_cancel);
-		ib.setBackgroundColor(0x00000000);
-    	ib.setOnClickListener(new View.OnClickListener() {
+		favBtn = (ImageButton) findViewById(R.id.abstract_fav_btn);
+		favBtn.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				// TODO
+			}
+		});
+		
+		closeBtn = (ImageButton) findViewById(R.id.abstract_close_btn);
+		closeBtn.setImageResource(android.R.drawable.ic_menu_close_clear_cancel);
+		closeBtn.setBackgroundColor(0x00000000);
+    	closeBtn.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				dismiss();
 			}
@@ -50,6 +61,8 @@ public class AbstractDialog extends Dialog {
 		
 		TextView tv = (TextView)findViewById(R.id.abstract_title);
 		tv.setText(event.title);
+		
+		
 		
 		tv = (TextView)findViewById(R.id.abstract_author);
 		tv.setText(event.author);
