@@ -1,39 +1,37 @@
 package org.capsec.confsched;
 
 import java.io.IOException;
-
-import org.capsec.confsched.data.Conference;
-import org.capsec.confsched.data.ConferenceDay;
-import org.capsec.confsched.data.ConferenceEvent;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.text.Layout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.capsec.confsched.data.Conference;
+import org.capsec.confsched.data.ConferenceDay;
+
 
 public class ConfSched extends Activity {
+	// Tag for log messages
 	private static final String TAG = "ConfSched";
 	
 	private static final int DIALOG_ABSTRACT = 1;
 	private static final int DIALOG_ABOUT = 2;
 		
 	// 
-    private Conference mConference;
-    private int mCurrentDay = 0;
     private EventScheduleView mScheduleView;
     private TextView mDayText;
+    private Conference mConference;
+    private int mCurrentDay = 0;
     
 	/** 
 	 * Called when the activity is first created. 
@@ -69,7 +67,7 @@ public class ConfSched extends Activity {
         btn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				int totalDays = mConference.days.size();
+				int totalDays = mConference.getTotalDays();
 				if (mCurrentDay < (totalDays-1)) {
 					setConferenceDay(mCurrentDay+1);
 				}
@@ -147,18 +145,20 @@ public class ConfSched extends Activity {
     	}
     }
 
+    /** 
+     * Set the conference day to be presented.
+     * @param day
+     */
     private void setConferenceDay(int day) {
-    	int totalDays = mConference.days.size();
-    	if (day >= totalDays) {
-    		day = totalDays - 1;
-    	}
-    	if (day < 0) {
-    		day = 0;
-    	}
-    	ConferenceDay confDay = mConference.days.get(day);
+    	int totalDays = mConference.getTotalDays();
+
+    	day = Math.max(day, 0);
+    	day = Math.min(day, totalDays-1);
+
+    	ConferenceDay confDay = mConference.getDay(day);
     	
     	mCurrentDay = day;
     	mScheduleView.setConferenceData(confDay);
-    	mDayText.setText(confDay.name);
+    	mDayText.setText(confDay.getName());
     }
 }

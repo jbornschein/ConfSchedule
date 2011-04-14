@@ -11,7 +11,27 @@ import java.util.Date;
  *
  */
 public class ConferenceDay {
-	public Date date;
-	public String name = "";
-	public ArrayList<ConferenceTrack> tracks = new ArrayList<ConferenceTrack>();
+	protected Date date;
+	protected String name = "";
+	protected ArrayList<ConferenceTrack> tracks = new ArrayList<ConferenceTrack>();
+	
+	/************************************************************************************
+	 * Getter / setter methods...
+	 */
+	
+	public Date getDate() {
+		return date;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public ConferenceTrack getTrack(int track) {
+		return tracks.get(track);
+	}
+	
+	public int getTotalTracks() {
+		return tracks.size();
+	}
 }

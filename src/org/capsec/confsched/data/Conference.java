@@ -18,19 +18,42 @@ import android.content.Context;
 import android.util.Log;
 
 /**
+ * This class provides the top-level object to store Conference Information.
+ * 
  * @author Joerg Bornschein
- *
  */
 public class Conference {
 	private static final String TAG = "ConfSched";
+	
+	private enum ThemeId {Bright, Black};
 	private enum ParserState {Top, Conference, ConferenceName, ConferenceURL, Day, DayDate, DayName, 
 		Track, TrackRoom, Event, EventTitle, EventAuthor, EventStart, EventEnd, EventAbstract };
 	
-	public String name = "";
-	public String url = "";
-	public ArrayList<ConferenceDay> days = new ArrayList<ConferenceDay>();
+	protected String name = "";
+	protected String url = "";
+	protected ThemeId theme = ThemeId.Bright;
+	protected ArrayList<ConferenceDay> days = new ArrayList<ConferenceDay>();
 
-
+	/*****************************************************************************
+	 * Access methods
+	 */
+	
+	public String getName() {
+		return name;
+	}
+	
+	public String getURL() {
+		return url;
+	}
+	
+	public ConferenceDay getDay(int day) {
+		return days.get(day);
+	}
+	
+	public int getTotalDays() {
+		return days.size();
+	}
+	
 	/**
 	 * Parse XML conference description...
 	 * 
@@ -114,7 +137,7 @@ public class Conference {
 					break;
 				}
 			} else if (eventType == XmlPullParser.END_TAG) {
-				String tag = xpp.getName();
+				//	String tag = xpp.getName();
 				switch (state) {
 				case EventEnd:
 					state = ParserState.Event;

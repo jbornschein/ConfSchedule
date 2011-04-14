@@ -1,25 +1,18 @@
 /**
- * @author Joerg Bornschein <jb@capsec.org>
+ * View (Widget) to display a timeline with events
  * 
+ * @author Joerg Bornschein <jb@capsec.org>
  */
 package org.capsec.confsched;
 
+import java.lang.Math;
 import java.util.Calendar;
 
-import java.lang.Math;
-import org.capsec.confsched.data.ConferenceDay;
-import org.capsec.confsched.data.ConferenceEvent;
-import org.capsec.confsched.data.ConferenceTrack;
-
-
-
-import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.text.Layout;
@@ -29,6 +22,10 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+
+import org.capsec.confsched.data.ConferenceDay;
+import org.capsec.confsched.data.ConferenceEvent;
+import org.capsec.confsched.data.ConferenceTrack;
 
 /**
  * EventScheduleView
@@ -69,12 +66,13 @@ public class EventScheduleView extends View {
     public void setConferenceData(ConferenceDay confDay) {
     	mConfDay = confDay;
     	
-    	mNumTracks = confDay.tracks.size();
+    	mNumTracks = confDay.getTotalTracks();
     	
     	// Find first/last hour of this conference
     	mFirstHour = 23;
     	mLastHour = 0;
-    	for (ConferenceTrack track : confDay.tracks) {
+    	for (int t=0; t<mNumTracks; t++) {
+    		ConferenceTrack track = confDay.getTrack(t);
     		int trackSize = track.events.size();
     		mFirstHour = Math.min(mFirstHour, track.events.get(0).startHour);
     		mLastHour = Math.max(mLastHour, track.events.get(trackSize-1).endHour);
@@ -112,7 +110,7 @@ public class EventScheduleView extends View {
     		if (y < trackRect.top || y > trackRect.bottom)
     			continue;
     		
-    		for (ConferenceEvent event : mConfDay.tracks.get(t).events) {
+    		for (ConferenceEvent event : mConfDay.getTrack(t).events) {
     			RectF eventRect = calcEventRect(t, event);
     			if (x > eventRect.left && x < eventRect.right) {
     				// Found the tapped event!
@@ -249,7 +247,7 @@ public class EventScheduleView extends View {
     	fontPaint.setTypeface(Typeface.DEFAULT);
     	fontPaint.setTextSize(fontSize);
     	
-    	ConferenceTrack track = mConfDay.tracks.get(trackNum);
+    	ConferenceTrack track = mConfDay.getTrack(trackNum);
     	for (ConferenceEvent event : track.events) {
     		RectF rect = calcEventRect(trackNum, event);
     		
@@ -315,8 +313,6 @@ public class EventScheduleView extends View {
     	int curHour = rightNow.get(Calendar.HOUR_OF_DAY);
 
     	// XXX check day 
-    	
-    	
     	if (curHour < (mFirstHour-1) || curHour > (mLastHour+1)) 
     		return false;
     	
