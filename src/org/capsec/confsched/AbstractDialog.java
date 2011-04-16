@@ -7,9 +7,11 @@ import org.capsec.confsched.data.ConferenceEvent;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -22,7 +24,7 @@ public class AbstractDialog extends Dialog {
 	final static String TAG = "ConfApp.AbstractDialog";
 	
 	protected ImageButton closeBtn;
-	protected ImageButton favBtn;
+	protected CheckBox favBtn;
 	
 	public AbstractDialog(Context context, int theme) {
 		super(context, theme);
@@ -39,7 +41,7 @@ public class AbstractDialog extends Dialog {
 		setContentView(R.layout.dialog_abstract);
 		getWindow().setLayout(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
 		
-		favBtn = (ImageButton) findViewById(R.id.abstract_fav_btn);
+		favBtn = (CheckBox) findViewById(R.id.abstract_fav_btn);
 		favBtn.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				// TODO
@@ -59,15 +61,12 @@ public class AbstractDialog extends Dialog {
 	public void setEvent(ConferenceEvent event) {
 		setTitle(event.title);
 		
-		TextView tv = (TextView)findViewById(R.id.abstract_title);
-		tv.setText(event.title);
+		String text = "";
+		text += "<big>" + event.title + "</big><br/>\n";
+		text += "<i>" + event.author + "</i><br/><br/>\n\n";
+		text += event.abstractText;
 		
-		
-		
-		tv = (TextView)findViewById(R.id.abstract_author);
-		tv.setText(event.author);
-
-		tv = (TextView)findViewById(R.id.abstract_text); 
-		tv.setText(event.abstractText);
+		TextView tv = (TextView)findViewById(R.id.abstract_text); 
+		tv.setText(Html.fromHtml(text));
 	}
 }

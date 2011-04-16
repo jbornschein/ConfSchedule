@@ -12,16 +12,6 @@
   	android:layout_height="fill_parent" 
   	android:layout_width="wrap_content" 
   	android:layout_weight="10">
-  	  <TextView
-  	  	android:id="@+id/abstract_title"
-  	  	android:layout_height="wrap_content"
-  	  	android:layout_width="wrap_content"
-  	  	android:text="Title of Event" android:textSize="20dp" android:textStyle="bold"/>
-  	  <TextView
-  	  	android:id="@+id/abstract_author"
-  	  	android:layout_height="wrap_content"
-  	  	android:layout_width="wrap_content"
-  	  	android:text="Author of Event" android:layout_marginBottom="8dp"/>
   	  <ScrollView
   		android:id="@+id/scrollView1" 
   		android:layout_height="fill_parent" 
